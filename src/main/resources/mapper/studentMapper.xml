@@ -46,13 +46,13 @@
         FROM
         student s
         <where>
-            <if test="params.entity.sex != null">
-                AND s.`sex`=#{params.entity.sex}
+            <if test="sex != null">
+                AND s.`sex`=#{sex}
             </if>
-            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(params.entity.name)">
-                AND m.`name` like CONCAT('%',"\\" #{params.entity.name},'%' )
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(name)">
+                AND m.`name` like CONCAT('%',"\\" #{name},'%' )
             </if>
         </where>
-        ORDER  by id
+        ORDER by id
     </select>
 </mapper>
