@@ -1,9 +1,11 @@
 package com.ssm.model;
 
+import java.io.Serializable;
+
 /**
  * Created by user on 2018/1/8.
  */
-public class StudentModel {
+public class Student implements Serializable {
     private int id;
     private String name;
     private int sex;
@@ -41,5 +43,13 @@ public class StudentModel {
         this.age = age;
     }
 
-
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sex=" + sex +
+                ", age=" + age +
+                '}';
+    }
 }

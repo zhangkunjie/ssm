@@ -1,6 +1,8 @@
 package com.ssm.service;
 
-import com.ssm.model.StudentModel;
+import com.ssm.model.PageModel;
+import com.ssm.model.Student;
+import sun.jvm.hotspot.debugger.Page;
 
 import java.util.List;
 import java.util.Map;
@@ -9,7 +11,11 @@ import java.util.Map;
  * Created by user on 2018/1/8.
  */
 public interface StudentService {
-    public List<StudentModel> findAllStudnts(StudentModel studentModel);
-    public List<Map<String,String>> findAllStudntsMapList(StudentModel studentModel);
-    public StudentModel findStudentById(Map<String,Integer> param);
+    public List<Student> findAllStudnts(Student student);
+
+    public PageModel<Student> findPage(Student student,int pageSize,int pageNo);
+
+    public List<Map<String, String>> findAllStudntsMapList(Student student);
+
+    public Student findStudentById(Map<String, Integer> param);
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.StudentDao">
+    <!--配置一个resultMap 指定返回的类型 -->
+    <resultMap id="studentModelRM" type="Student">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <!-- <result column="sex" property="sex" />-->
+        <!-- <result column="age" property="age" />-->
+    </resultMap>
+
+    <select id="findAll" parameterType="Student" resultMap="studentModelRM">
+        select id,name from student
+        <where>
+            <if test="id!=null and id!=''">
+                and id=#{id}
+            </if>
+        </where>
+    </select>
+    <select id="findAllMapList" parameterType="Student" resultMap="studentModelRM">
+        select id,name from student
+        <where>
+            <if test="id!=null and id!=''">
+                and id=1
+            </if>
+        </where>
+    </select>
+    <select id="findStudentById" parameterType="Map" resultMap="studentModelRM">
+        select id,name from student
+        <where>
+            <!--         <if test="name!=null and name!=''">
+                      and name=#{name}
+                  </if>-->
+            <if test="id!=null and id!=''">
+                and id=#{id}
+            </if>
+        </where>
+    </select>
+    <!-- id 固定的 findPaging parameterType 固定的 pageModel params.entity固定写法 -->
+    <select id="findPage" parameterType="pageModel" resultMap="studentModelRM">
+        SELECT
+        s.id,
+        s.name,
+        s.sex,
+        s.age
+        FROM
+        student s
+        <where>
+            <if test="params.entity.sex != null">
+                AND s.`sex`=#{params.entity.sex}
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(params.entity.name)">
+                AND m.`name` like CONCAT('%',"\\" #{params.entity.name},'%' )
+            </if>
+        </where>
+        ORDER  by id
+    </select>
+</mapper>

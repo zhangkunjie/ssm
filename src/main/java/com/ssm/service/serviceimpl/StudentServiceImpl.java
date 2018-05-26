@@ -1,9 +1,9 @@
 package com.ssm.service.serviceimpl;
 
 import com.ssm.dao.StudentDao;
-import com.ssm.model.StudentModel;
+import com.ssm.model.PageModel;
+import com.ssm.model.Student;
 import com.ssm.service.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,18 +17,29 @@ import java.util.Map;
 public class StudentServiceImpl implements StudentService {
 
     @Resource
-    @Autowired
     private StudentDao studentDao;
 
-    public List<StudentModel> findAllStudnts(StudentModel studentModel) {
+    public List<Student> findAllStudnts(Student studentModel) {
         return studentDao.findAll(studentModel);
     }
 
-    public List<Map<String, String>> findAllStudntsMapList(StudentModel studentModel) {
-        return  studentDao.findAllMapList(studentModel);
+    @Override
+    public PageModel<Student> findPage(Student student, int pageSize, int pageNo) {
+        PageModel<Student> pageModel = new PageModel<Student>();
+        pageModel.setPageSize(pageSize);
+        pageModel.setPageNo(pageNo);
+        pageModel.getParams().put("entity",student);
+        List<Student> list = studentDao.findPage(pageModel);
+        System.out.println("sss");
+        pageModel.setResults(list);
+        return pageModel;
     }
 
-    public StudentModel findStudentById(Map<String, Integer> param) {
+    public List<Map<String, String>> findAllStudntsMapList(Student studentModel) {
+        return studentDao.findAllMapList(studentModel);
+    }
+
+    public Student findStudentById(Map<String, Integer> param) {
         return studentDao.findStudentById(param);
     }
 

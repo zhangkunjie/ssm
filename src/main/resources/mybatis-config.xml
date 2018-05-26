@@ -6,6 +6,11 @@
     <typeAliases>
         <package name="com.ssm.model"/>
     </typeAliases>
+    <plugins>
+        <plugin interceptor="com.ssm.common.interceptor.PaginationInterceptor">
+            <property name="databaseType" value="mysql"/>
+        </plugin>
+    </plugins>
     <mappers>
         <package name="org.ssm.mapping"/>
     </mappers>
