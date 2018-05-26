@@ -30,7 +30,6 @@ public class StudentServiceImpl implements StudentService {
         pageModel.setPageNo(pageNo);
         pageModel.getParams().put("entity",student);
         List<Student> list = studentDao.findPage(pageModel);
-        System.out.println("sss");
         pageModel.setResults(list);
         return pageModel;
     }
