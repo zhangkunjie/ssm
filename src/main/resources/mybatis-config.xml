@@ -12,6 +12,9 @@
         </plugin>
     </plugins>
     <mappers>
-        <package name="org.ssm.mapping"/>
+        <!--可以使用package的配置方式-->
+        <!--<package name="com.XXXX"/>-->
+        <!--resource的配置方式-->
+        <!--<mapper resource="mapper/*Mapper.xml"/>-->
     </mappers>
 </configuration>
