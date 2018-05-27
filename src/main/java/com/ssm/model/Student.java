@@ -1,21 +1,25 @@
 package com.ssm.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  * Created by user on 2018/1/8.
  */
 public class Student implements Serializable {
-    private int id;
+    private Integer id;
     private String name;
-    private int sex;
-    private int age;
+    private Integer gender;
+    private Integer age;
+    private Date birthday;
+    private String address;
+    private Integer status;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -27,20 +31,44 @@ public class Student implements Serializable {
         this.name = name;
     }
 
-    public int getSex() {
-        return sex;
+    public Integer getGender() {
+        return gender;
     }
 
-    public void setSex(int sex) {
-        this.sex = sex;
+    public void setGender(Integer gender) {
+        this.gender = gender;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     @Override
@@ -48,8 +76,11 @@ public class Student implements Serializable {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", sex=" + sex +
+                ", gender=" + gender +
                 ", age=" + age +
+                ", birthday=" + birthday +
+                ", address='" + address + '\'' +
+                ", status=" + status +
                 '}';
     }
 }

@@ -1,5 +1,6 @@
 package com.ssm.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.ssm.common.utils.JsonCallBack;
 import com.ssm.model.PageModel;
 import com.ssm.model.Student;
@@ -89,8 +90,8 @@ public class StudentController {
         JsonCallBack jsonCallBack = new JsonCallBack(true);
         Map<String, Object> pairs = jsonCallBack.getPairs();
         try {
-            PageModel<Student> studentModel = studentService.findPage(student, pageNo, pageSize);
-            pairs.put("dat", studentModel);
+            PageInfo<Student> pageInfo = studentService.findPage(student, pageNo, pageSize);
+            pairs.put("dat", pageInfo);
         } catch (Exception e) {
             jsonCallBack.setSuccess(false);
             jsonCallBack.setMessage(e.getMessage());

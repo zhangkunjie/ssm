@@ -12,7 +12,6 @@ import java.util.Map;
 /**
  * Created by user on 2018/1/8.
  */
-@Repository
 public interface StudentDao extends BaseDao<Student, Long> {
     public List<Student> findAll(Student studentModel);
 

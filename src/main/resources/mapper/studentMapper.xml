@@ -5,8 +5,11 @@
     <resultMap id="studentModelRM" type="Student">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
-        <!-- <result column="sex" property="sex" />-->
-        <!-- <result column="age" property="age" />-->
+        <result column="gender" property="gender"/>
+        <result column="age" property="age"/>
+        <result column="birthday" property="birthday"/>
+        <result column="address" property="address"/>
+        <result column="status" property="status"/>
     </resultMap>
 
     <select id="findAll" parameterType="Student" resultMap="studentModelRM">
@@ -37,20 +40,29 @@
         </where>
     </select>
     <!-- id 固定的 findPaging parameterType 固定的 pageModel params.entity固定写法 -->
-    <select id="findPage" parameterType="pageModel" resultMap="studentModelRM">
+    <select id="findPage" parameterType="student" resultMap="studentModelRM">
         SELECT
         s.id,
         s.name,
-        s.sex,
-        s.age
+        s.gender,
+        s.age,
+        s.birthday,
+        s.address,
+        s.status
         FROM
         student s
         <where>
-            <if test="sex != null">
-                AND s.`sex`=#{sex}
-            </if>
             <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(name)">
                 AND m.`name` like CONCAT('%',"\\" #{name},'%' )
+            </if>
+            <if test="gender != null">
+                AND s.`gender`=#{gender}
+            </if>
+            <if test="age != null">
+                AND s.`age`=#{age}
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(address)">
+                AND m.`address` like CONCAT('%',"\\" #{address},'%' )
             </if>
         </where>
         ORDER by id

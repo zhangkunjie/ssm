@@ -1,5 +1,6 @@
 package com.ssm.service;
 
+import com.github.pagehelper.PageInfo;
 import com.ssm.model.PageModel;
 import com.ssm.model.Student;
 import sun.jvm.hotspot.debugger.Page;
@@ -13,7 +14,7 @@ import java.util.Map;
 public interface StudentService {
     public List<Student> findAllStudnts(Student student);
 
-    public PageModel<Student> findPage(Student student,int pageSize,int pageNo);
+    public PageInfo<Student> findPage(Student student, int pageSize, int pageNo);
 
     public List<Map<String, String>> findAllStudntsMapList(Student student);
 

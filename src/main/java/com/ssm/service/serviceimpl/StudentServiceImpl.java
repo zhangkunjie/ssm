@@ -1,5 +1,7 @@
 package com.ssm.service.serviceimpl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.ssm.dao.StudentDao;
 import com.ssm.model.PageModel;
 import com.ssm.model.Student;
@@ -24,14 +26,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public PageModel<Student> findPage(Student student, int pageSize, int pageNo) {
-        PageModel<Student> pageModel = new PageModel<Student>();
-        pageModel.setPageSize(pageSize);
-        pageModel.setPageNo(pageNo);
-        pageModel.getParams().put("entity",student);
-        List<Student> list = studentDao.findPage(pageModel);
-        pageModel.setResults(list);
-        return pageModel;
+    public PageInfo<Student> findPage(Student student, int pageSize, int pageNo) {
+        PageHelper.startPage(pageNo, pageSize);
+        List<Student> list = studentDao.findPage(student);
+        PageInfo<Student> pageInfo = new PageInfo<Student>(list);
+        return pageInfo;
     }
 
     public List<Map<String, String>> findAllStudntsMapList(Student studentModel) {
