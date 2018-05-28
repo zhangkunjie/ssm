@@ -1,4 +1,4 @@
-package com.ssm.constant;
+package com.ssm.common.constant;
 
 /**
  * Created by kunjie.zhang on 2018/5/28.

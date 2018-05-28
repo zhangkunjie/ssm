@@ -1,6 +1,6 @@
 package com.ssm.model;
 
-import com.ssm.constant.Constant;
+import com.ssm.common.constant.Constant;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
