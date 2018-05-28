@@ -43,7 +43,7 @@
     <mappers>
         <!--可以使用package的配置方式-->
         <!--<package name="com.XXXX"/>-->
-        <!--resource的配置方式-->
-        <!--<mapper resource="mapper/*Mapper.xml"/>-->
+        <!--或者resource的配置方式-->
+        <!--<mapper resource="mapper/studentMapper.xml"/>-->
     </mappers>
 </configuration>
